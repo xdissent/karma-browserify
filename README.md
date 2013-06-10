@@ -76,3 +76,6 @@ describe 'karma tests with browserify', ->
   it 'should gimme dat module', ->
     something.should.exist()
 ```
+
+See the [example](https://github.com/xdissent/karma-browserify/tree/master/example)
+for a simple working setup.
