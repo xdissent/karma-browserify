@@ -6,97 +6,76 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
 
   tableOfContents = [
     {
-      "type": "file",
+      "type": "folder",
       "data": {
-        "language": {
-          "nameMatchers": [".md"],
-          "commentsOnly": true,
-          "name": "Markdown"
-        },
-        "sourcePath": "/Users/xdissent/Code/karma-browserify/README.md",
-        "projectPath": "README.md",
-        "targetPath": "index",
-        "firstHeader": {
-          "type": "heading",
+        "path": "src",
+        "title": "src"
+      },
+      "depth": 1,
+      "children": [
+        {
+          "type": "file",
           "data": {
-            "level": 1,
-            "title": "karma-browserify",
-            "slug": "karma-browserify",
-            "isFileHeader": true
+            "language": {
+              "nameMatchers": [".coffee", "Cakefile"],
+              "pygmentsLexer": "coffee-script",
+              "singleLineComment": ["#"],
+              "name": "CoffeeScript"
+            },
+            "sourcePath": "/Users/xdissent/Code/karma-browserify/src/index.coffee",
+            "projectPath": "src/index.coffee",
+            "targetPath": "src/index",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Karma Browserify",
+                "slug": "karma-browserify",
+                "isFileHeader": true
+              },
+              "depth": 1,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Framework",
+                    "slug": "framework"
+                  },
+                  "depth": 2
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 2,
+                    "title": "Preprocessor",
+                    "slug": "preprocessor"
+                  },
+                  "depth": 2
+                }
+              ]
+            },
+            "title": "Karma Browserify"
           },
-          "depth": 1,
-          "children": [
+          "depth": 2,
+          "outline": [
             {
               "type": "heading",
               "data": {
                 "level": 2,
-                "title": "Requirements",
-                "slug": "requirements"
+                "title": "Framework",
+                "slug": "framework"
               },
               "depth": 2
             }, {
               "type": "heading",
               "data": {
                 "level": 2,
-                "title": "Installation",
-                "slug": "installation"
-              },
-              "depth": 2
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 2,
-                "title": "Options",
-                "slug": "options"
-              },
-              "depth": 2
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 2,
-                "title": "Usage",
-                "slug": "usage"
+                "title": "Preprocessor",
+                "slug": "preprocessor"
               },
               "depth": 2
             }
           ]
-        },
-        "title": "karma-browserify"
-      },
-      "depth": 1,
-      "outline": [
-        {
-          "type": "heading",
-          "data": {
-            "level": 2,
-            "title": "Requirements",
-            "slug": "requirements"
-          },
-          "depth": 2
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 2,
-            "title": "Installation",
-            "slug": "installation"
-          },
-          "depth": 2
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 2,
-            "title": "Options",
-            "slug": "options"
-          },
-          "depth": 2
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 2,
-            "title": "Usage",
-            "slug": "usage"
-          },
-          "depth": 2
         }
       ]
     }
