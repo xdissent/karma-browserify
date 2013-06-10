@@ -3,6 +3,8 @@ karma-browserify
 
 [Browserify](http://browserify.org) for [Karma](http://karma-runner.github.io)
 
+[![NPM version](https://badge.fury.io/js/karma-browserify.png)](http://badge.fury.io/js/karma-browserify)
+
 Browserify is an awesome tool for managing front-end module dependencies with
 `require`, just like you would in Node. Karma is a killer JS test runner that's 
 super fast and easy. But put them together and you're entering a world of pain.
@@ -37,7 +39,13 @@ Note that the Karma configuration file format has changed since `v0.8`. Use
 Installation
 ------------
 
-Install the module from Github:
+Install the plugin from npm:
+
+```sh
+$ npm install karma-browserify --save-dev
+```
+
+Or from Github:
 
 ```sh
 $ npm install 'git+https://github.com/xdissent/karma-browserify.git' --save-dev
