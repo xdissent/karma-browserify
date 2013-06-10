@@ -1,4 +1,5 @@
 /doc
 /node_modules
 /lib
+/example/node_modules
 .DS_Store
