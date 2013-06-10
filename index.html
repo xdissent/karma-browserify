@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="README.md"><meta name="groc-github-url" content="https://github.com/xdissent/karma-browserify"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/xdissent/karma-browserify/blob/master/README.md">README.md</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="karma-browserify">karma-browserify</h1>
+
+<p><a href="http://browserify.org">Browserify</a> for <a href="http://karma-runner.github.io">Karma</a></p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>This module currently requires the <code>canary</code> version of Karma:</p>
+
+<pre><code class="sh">$ npm install 'karma@canary' --save-dev
+</code></pre>
+
+<p>Note that the Karma configuration file format has changed since <code>v0.8</code>. Use 
+<code>karma init</code> to generate a fresh config.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Install the module from Github:</p>
+
+<pre><code class="sh">$ npm install 'git+https://github.com/xdissent/karma-browserify.git' --save-dev
+</code></pre>
+
+<p>Add <code>browserify</code> to the <code>frameworks</code> and <code>preprocessor</code> keys in your 
+Karma configuration:</p>
+
+<pre><code class="coffee">module.exports = (karma) -&gt;
+  karma.configure
+
+    # frameworks to use
+    frameworks: ['mocha', 'browserify']
+
+    preprocessors:
+      '**/*.coffee': 'coffee'
+      'my/test/files/*': 'browserify'
+
+    # ...
+</code></pre>
+
+<h2 id="options">Options</h2>
+
+<p>The plugin may be configured using the <code>browserify</code> key in your Karma config:</p>
+
+<pre><code class="coffee">module.exports = (karma) -&gt;
+  karma.configure
+
+    browserify: 
+      extension: ['.coffee']  # This is for future compatibility.
+      ignore: [path.join __dirname, 'components/angular-unstable/angular.js']
+      transform: ['coffeeify']
+      watch: true   # Watches dependencies only (Karma watches the tests)
+
+    # ...
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+
+<p>Just <code>require</code> modules from within tests as you normally would in Node:</p>
+
+<pre><code class="coffee">something = require '../some/module'
+
+describe 'karma tests with browserify', -&gt;
+
+  it 'should gimme dat module', -&gt;
+    something.should.exist()
+</code></pre></div></div></div></div></body></html>
