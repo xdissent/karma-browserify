@@ -87,11 +87,15 @@ preprocessor = (logger, config) ->
     # Build the file bundle.
     fileBundle.bundle deps: deps, (err, fileContent) ->
       # Add any new dependencies in the cache to the dependency bundle.
+      added = false   # Keep track of whether we added any.
       for d in depsCache when d not in depsBundle.files
         # Expose the bundle with the absolute filename.
         depsBundle.require d, expose: d
         # Watch dependency files for changes if requested in the config.
         watch d if config.watch
+        added = true  # Set the added flag.
+      # Bail and write the file bundle unless new dependencies were added.
+      return done fileContent unless added
       # Write out the dependency bundle.
       writeDeps -> done fileContent
 
