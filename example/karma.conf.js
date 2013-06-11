@@ -43,7 +43,7 @@ module.exports = function(karma) {
 
     // level of logging
     // possible values: karma.LOG_DISABLE || karma.LOG_ERROR || karma.LOG_WARN || karma.LOG_INFO || karma.LOG_DEBUG
-    logLevel: karma.LOG_INFO,
+    logLevel: karma.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -78,7 +78,10 @@ module.exports = function(karma) {
     },
 
     // Add browserify to preprocessors
-    preprocessors: {'test/*': 'browserify'}
+    preprocessors: {'test/*': 'browserify'},
+
+    // Not required if you've installed karma-browserify via npm.
+    plugins: ['karma-*', require('../')]
 
   });
 };
