@@ -71,7 +71,7 @@ preprocessor = (logger, config) ->
     log.debug 'Processing "%s".', file.originalPath
 
     # Create a file-specific browserify bundle and apply the configuration.
-    fileBundle = browserify file.originalPath
+    fileBundle = browserify path.normalize file.originalPath
     applyConfig fileBundle, config
 
     # Override the bundle's default dependency handling, adding all dependencies
