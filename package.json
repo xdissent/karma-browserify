@@ -2,7 +2,7 @@
   "name": "karma-browserify",
   "description": "Browserify for Karma",
   "keywords": [
-    "karma",
+    "karma-plugin",
     "browserify"
   ],
   "version": "0.0.3",
