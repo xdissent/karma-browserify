@@ -55,15 +55,15 @@ Add `browserify` to the `frameworks` and `preprocessor` keys in your
 Karma configuration:
 
 ```coffee
-module.exports = (karma) ->
-  karma.configure
+module.exports = (config) ->
+  config.set
 
     # frameworks to use
     frameworks: ['mocha', 'browserify']
 
     preprocessors:
-      '**/*.coffee': 'coffee'
-      'my/test/files/*': 'browserify'
+      '**/*.coffee': ['coffee']
+      'my/test/files/*': ['browserify']
 
     # ...
 ```
@@ -75,8 +75,8 @@ Options
 The plugin may be configured using the `browserify` key in your Karma config:
 
 ```coffee
-module.exports = (karma) ->
-  karma.configure
+module.exports = (config) ->
+  config.set
 
     browserify: 
       extension: ['.coffee']  # This is for future compatibility.
