@@ -23,19 +23,6 @@ the browser only when necessary (watching for changes is supported) and your
 tests remain lightning fast.
 
 
-Requirements
-------------
-
-This module currently requires the `canary` version of Karma:
-
-```sh
-$ npm install 'karma@canary' --save-dev
-```
-
-Note that the Karma configuration file format has changed since `v0.8`. Use 
-`karma init` to generate a fresh config.
-
-
 Installation
 ------------
 
