@@ -1,8 +1,8 @@
 // Karma configuration
 // Generated on Mon Jun 10 2013 09:57:07 GMT-0500 (CDT)
 
-module.exports = function(karma) {
-  karma.configure({
+module.exports = function(config) {
+  config.set({
 
     // base path, that will be used to resolve files and exclude
     basePath: '',
@@ -42,8 +42,8 @@ module.exports = function(karma) {
 
 
     // level of logging
-    // possible values: karma.LOG_DISABLE || karma.LOG_ERROR || karma.LOG_WARN || karma.LOG_INFO || karma.LOG_DEBUG
-    logLevel: karma.LOG_DEBUG,
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -78,7 +78,7 @@ module.exports = function(karma) {
     },
 
     // Add browserify to preprocessors
-    preprocessors: {'test/*': 'browserify'},
+    preprocessors: {'test/*': ['browserify']},
 
     // Not required if you've installed karma-browserify via npm.
     plugins: ['karma-*', require('../')]
