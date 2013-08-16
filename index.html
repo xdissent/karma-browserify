@@ -46,15 +46,15 @@ tests remain lightning fast.</p>
 <p>Add <code>browserify</code> to the <code>frameworks</code> and <code>preprocessor</code> keys in your 
 Karma configuration:</p>
 
-<pre><code class="coffee">module.exports = (karma) -&gt;
-  karma.configure
+<pre><code class="coffee">module.exports = (config) -&gt;
+  config.set
 
     # frameworks to use
     frameworks: ['mocha', 'browserify']
 
     preprocessors:
-      '**/*.coffee': 'coffee'
-      'my/test/files/*': 'browserify'
+      '**/*.coffee': ['coffee']
+      'my/test/files/*': ['browserify']
 
     # ...
 </code></pre>
@@ -63,8 +63,8 @@ Karma configuration:</p>
 
 <p>The plugin may be configured using the <code>browserify</code> key in your Karma config:</p>
 
-<pre><code class="coffee">module.exports = (karma) -&gt;
-  karma.configure
+<pre><code class="coffee">module.exports = (config) -&gt;
+  config.set
 
     browserify: 
       extension: ['.coffee']  # This is for future compatibility.
