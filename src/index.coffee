@@ -28,7 +28,7 @@ hash = (what) -> crypto.createHash('md5').update(what).digest('base64').slice 0,
 
 # Apply select keys from a configuration object to a browserify bundle.
 applyConfig = (b, cfg) ->
-  (b[c] v for v in [].concat cfg[c] if cfg[c]? and b[c]?) for c in configs
+  (b[c] v for v in [].concat cfg[c] if cfg?[c]? and b?[c]?) for c in configs
 
 # Write the dependency bundle out to the temporary file.
 writeDeps = (callback) ->
