@@ -66,10 +66,12 @@ module.exports = (config) ->
   config.set
 
     browserify: 
-      extension: ['.coffee']  # This is for future compatibility.
+      extensions: ['.coffee']
       ignore: [path.join __dirname, 'components/angular-unstable/angular.js']
       transform: ['coffeeify']
       watch: true   # Watches dependencies only (Karma watches the tests)
+      debug: true   # Adds source maps to bundle
+      noParse: ['jquery'] # Don't parse some modules
 
     # ...
 ```
