@@ -21,7 +21,7 @@ depsBundle = null
 tmp = null
 
 # The safe configuration keys to apply to the browserify bundles.
-configs = ['extension', 'transform', 'ignore']
+configs = ['transform', 'ignore']
 
 # Create a MD5 hash for browserify export names.
 hash = (what) -> crypto.createHash('md5').update(what).digest('base64').slice 0, 6
@@ -58,8 +58,7 @@ framework = (files, config) ->
 
   # Initialize a browserify bundle for the global dependencies and apply the
   # Karma configuration.
-  depsBundle = browserify()
-  applyConfig depsBundle, config
+  depsBundle = configuredBrowserify undefined, config
 
 # ## Preprocessor
 preprocessor = (logger, config) ->
@@ -71,8 +70,7 @@ preprocessor = (logger, config) ->
     log.debug 'Processing "%s".', file.originalPath
 
     # Create a file-specific browserify bundle and apply the configuration.
-    fileBundle = browserify path.normalize file.originalPath
-    applyConfig fileBundle, config
+    fileBundle = configuredBrowserify (path.normalize file.originalPath), config
 
     # Override the bundle's default dependency handling, adding all dependencies
     # to the dependency cache and excluding them from the file bundle by passing
@@ -98,6 +96,19 @@ preprocessor = (logger, config) ->
       return done fileContent unless added
       # Write out the dependency bundle.
       writeDeps -> done fileContent
+
+configuredBrowserify = (files, config) ->
+  options = {
+    entries: files and [].concat files
+    extensions: config.extension
+    noParse: config.noParse
+  }
+
+  bundle = browserify(options)
+
+  applyConfig bundle, config
+
+  bundle
 
 framework.$inject = ['config.files', 'config.browserify']
 preprocessor.$inject = ['logger', 'config.browserify']
