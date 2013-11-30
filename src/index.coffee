@@ -20,6 +20,9 @@ depsBundle = null
 # The temporary `karma-browserify.js` file path.
 tmp = null
 
+# Debug mode adds sourcemaps to the bundle.
+debug = false
+
 # The safe configuration keys to apply to the browserify bundles.
 configs = ['transform', 'ignore']
 
@@ -32,7 +35,7 @@ applyConfig = (b, cfg) ->
 
 # Write the dependency bundle out to the temporary file.
 writeDeps = (callback) ->
-  depsBundle.bundle (err, depsContent) ->
+  depsBundle.bundle debug: debug, (err, depsContent) ->
     return err if err
     fs.writeFile tmp, depsContent, (err) ->
       return err if err
@@ -59,6 +62,9 @@ framework = (files, config) ->
   # Initialize a browserify bundle for the global dependencies and apply the
   # Karma configuration.
   depsBundle = configuredBrowserify undefined, config
+
+  # Turn on debug if given in config.
+  debug = config.debug
 
 # ## Preprocessor
 preprocessor = (logger, config) ->
@@ -98,16 +104,12 @@ preprocessor = (logger, config) ->
       writeDeps -> done fileContent
 
 configuredBrowserify = (files, config) ->
-  options = {
+  options =
     entries: files and [].concat files
     extensions: config.extension
     noParse: config.noParse
-  }
-
-  bundle = browserify(options)
-
+  bundle = browserify options
   applyConfig bundle, config
-
   bundle
 
 framework.$inject = ['config.files', 'config.browserify']
