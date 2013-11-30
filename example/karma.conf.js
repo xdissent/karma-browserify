@@ -71,10 +71,12 @@ module.exports = function(config) {
 
     // Browserify config (all optional)
     browserify: {
-      // extension: ['.coffee'],
+      // extensions: ['.coffee'],
       // ignore: [],
       // transform: ['coffeeify'],
-      watch: true
+      // debug: true,
+      // noParse: ['jquery'],
+      watch: true,
     },
 
     // Add browserify to preprocessors
