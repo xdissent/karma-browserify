@@ -96,7 +96,7 @@ preprocessor = (logger, config) ->
         # Expose the bundle with the absolute filename.
         depsBundle.require d, expose: d
         # Watch dependency files for changes if requested in the config.
-        watch d if config.watch
+        watch d if config and config.watch
         added = true  # Set the added flag.
       # Bail and write the file bundle unless new dependencies were added.
       return done fileContent unless added
