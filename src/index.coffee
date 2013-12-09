@@ -106,7 +106,7 @@ preprocessor = (logger, config) ->
 configuredBrowserify = (files, config) ->
   options =
     entries: files and [].concat files
-    extensions: config.extension
+    extensions: config.extension or config.extensions
     noParse: config.noParse
   bundle = browserify options
   applyConfig bundle, config
