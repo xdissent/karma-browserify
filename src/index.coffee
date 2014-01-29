@@ -52,7 +52,7 @@ watch = (file) ->
 
 # The karma-browserify framework creates a global bundle for all browserify
 # dependencies that are not top-level Karma files.
-framework = (files, config) ->
+framework = (files, config={}) ->
   # Create an empty temp file for the global dependency bundle and add it to the
   # Karma files list.
   tmp = path.join (if os.tmpdir then os.tmpdir() else os.tmpDir()), 'karma-browerify.js'
@@ -67,7 +67,7 @@ framework = (files, config) ->
   debug = config.debug
 
 # ## Preprocessor
-preprocessor = (logger, config) ->
+preprocessor = (logger, config={}) ->
   # Create a logger.
   log = logger.create 'preprocessor.browserify'
 
@@ -96,17 +96,17 @@ preprocessor = (logger, config) ->
         # Expose the bundle with the absolute filename.
         depsBundle.require d, expose: d
         # Watch dependency files for changes if requested in the config.
-        watch d if config and config.watch
+        watch d if config.watch
         added = true  # Set the added flag.
       # Bail and write the file bundle unless new dependencies were added.
       return done fileContent unless added
       # Write out the dependency bundle.
       writeDeps -> done fileContent
 
-configuredBrowserify = (files, config) ->
+configuredBrowserify = (files, config={}) ->
   options =
     entries: files and [].concat files
-    extensions: config.extension or config.extensions
+    extensions: config.extension or config.extensions or []
     noParse: config.noParse
   bundle = browserify options
   applyConfig bundle, config
