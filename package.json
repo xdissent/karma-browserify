@@ -22,18 +22,18 @@
     "url": "https://github.com/xdissent/karma-browserify/issues"
   },
   "dependencies": {
-    "through": "~2.3.4",
-    "chokidar": "~0.6.2"
+    "through": "~2.x.x",
+    "chokidar": "~0.x.x"
   },
   "peerDependencies": {
     "karma": ">=0.9",
-    "browserify": "~2.36 || ~3.0"
+    "browserify": "~2.36 || 3.x"
   },
   "devDependencies": {
-    "groc": "~0.4.0",
-    "coffee-script": "~1.6.3"
+    "groc": "0.x.x",
+    "coffee-script": "~1.7.1"
   },
   "scripts": {
-    "prepublish": "coffee -cbo lib src"
+    "prepublish": "./node_modules/.bin/coffee -cbo lib src"
   }
 }
