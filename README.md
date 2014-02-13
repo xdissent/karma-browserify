@@ -5,7 +5,7 @@ karma-browserify
 
 [![NPM version](https://badge.fury.io/js/karma-browserify.png)](http://badge.fury.io/js/karma-browserify) [![Dependency status](https://david-dm.org/xdissent/karma-browserify.png)](https://david-dm.org/xdissent/karma-browserify) [![devDependency Status](https://david-dm.org/xdissent/karma-browserify/dev-status.png)](https://david-dm.org/xdissent/karma-browserify#info=devDependencies)
 
-eBrowserify is an awesome tool for managing front-end module dependencies with
+Browserify is an awesome tool for managing front-end module dependencies with
 `require`, just like you would in Node. Karma is a killer JS test runner that's
 super fast and easy. But put them together and you're entering a world of pain.
 This plugin aims to make them play nice.
