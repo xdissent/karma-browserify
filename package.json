@@ -5,16 +5,25 @@
     "karma-plugin",
     "browserify"
   ],
-  "version": "0.0.6",
+  "version": "0.1.0",
   "author": {
     "name": "Greg Thornton",
     "email": "xdissent@me.com",
     "url": "http://xdissent.com"
   },
   "contributors": [
-    {"name": "Alexandre Lacheze", "url": "https://github.com/alexstrat"},
-    {"name": "Alex Gorbatchev", "url": "https://github.com/alexgorbatchev"},
-    {"name": "Peter Lyons", "url": "https://github.com/focusaurus"}
+    {
+      "name": "Alexandre Lacheze",
+      "url": "https://github.com/alexstrat"
+    },
+    {
+      "name": "Alex Gorbatchev",
+      "url": "https://github.com/alexgorbatchev"
+    },
+    {
+      "name": "Peter Lyons",
+      "url": "https://github.com/focusaurus"
+    }
   ],
   "main": "./index.js",
   "license": "MIT",
