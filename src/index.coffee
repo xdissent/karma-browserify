@@ -26,9 +26,6 @@ debug = false
 # The safe configuration keys to apply to the browserify bundles.
 configs = ['transform', 'ignore']
 
-# Create a MD5 hash for browserify export names.
-hash = (what) -> crypto.createHash('md5').update(what).digest('base64').slice 0, 6
-
 # Apply select keys from a configuration object to a browserify bundle.
 applyConfig = (b, cfg) ->
   (b[c] v for v in [].concat cfg[c] if cfg?[c]? and b?[c]?) for c in configs
@@ -85,7 +82,7 @@ preprocessor = (logger, config={}) ->
       fileBundle.deps(opts).pipe through (row) ->
         if row.id isnt file.originalPath
           depsCache.push row.id unless row.id in depsCache
-          row.source = "module.exports=require('#{hash row.id}');"
+          row.source = "module.exports=require('#{fileBundle._hash row.id}');"
         @queue row
 
     # Build the file bundle.

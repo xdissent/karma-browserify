@@ -41,7 +41,7 @@
   },
   "peerDependencies": {
     "karma": ">=0.9",
-    "browserify": "~2.36 || 3.x"
+    "browserify": ">=3.30.5"
   },
   "devDependencies": {
     "groc": "0.x.x",
