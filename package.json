@@ -23,6 +23,10 @@
     {
       "name": "Peter Lyons",
       "url": "https://github.com/focusaurus"
+    },
+    {
+      "name": "Alex Arnell",
+      "url": "https://github.com/voidlock"
     }
   ],
   "main": "./index.js",
