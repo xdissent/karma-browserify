@@ -52,7 +52,10 @@ watch = (file) ->
 framework = (files, config={}) ->
   # Create an empty temp file for the global dependency bundle and add it to the
   # Karma files list.
-  tmp = path.join (if os.tmpdir then os.tmpdir() else os.tmpDir()), 'karma-browerify.js'
+  # MUST create a unique name else different projects can interfer with each other.
+  fileName = __dirname.replace(/[\\\/]/g, '_').replace('_node_modules_karma-browserify_lib', '');
+  fileName = fileName + '_karma-browerify.js';
+  tmp = path.join (if os.tmpdir then os.tmpdir() else os.tmpDir()), fileName
   fs.writeFileSync tmp, ''
   files.unshift pattern: tmp, included: true, served: true, watched: true
 
