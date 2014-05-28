@@ -10,6 +10,7 @@ fs = require 'fs'
 browserify = require 'browserify'
 through = require 'through'
 chokidar = require 'chokidar'
+crypto = require('crypto')
 
 # The dependency cache stores all browserify dependencies.
 depsCache = []
@@ -24,7 +25,7 @@ tmp = null
 debug = false
 
 # The safe configuration keys to apply to the browserify bundles.
-configs = ['transform', 'ignore']
+configs = ['transform', 'ignore', 'external']
 
 # Apply select keys from a configuration object to a browserify bundle.
 applyConfig = (b, cfg) ->
@@ -49,10 +50,17 @@ watch = (file) ->
 
 # The karma-browserify framework creates a global bundle for all browserify
 # dependencies that are not top-level Karma files.
-framework = (files, config={}) ->
+framework = (logger, files, config={}) ->
+  log = logger.create 'preprocessor.browserify (framework)'
   # Create an empty temp file for the global dependency bundle and add it to the
   # Karma files list.
-  tmp = path.join (if os.tmpdir then os.tmpdir() else os.tmpDir()), 'karma-browerify.js'
+  # MUST create a unique name else different projects can interfer with each other.
+  fileName = __dirname + '_karma-browerify.js'
+  # Filename path could be > 255 chars in length so md5 it.
+  # (http://stackoverflow.com/questions/1323013/what-are-the-chances-that-two-messages-have-the-same-md5-digest-and-the-same-sha)
+  hashedFileName = crypto.createHash('md5').update(fileName).digest("hex")
+  log.debug 'Writing to temp file: "%s".', hashedFileName
+  tmp = path.join (if os.tmpdir then os.tmpdir() else os.tmpDir()), hashedFileName
   fs.writeFileSync tmp, ''
   files.unshift pattern: tmp, included: true, served: true, watched: true
 
@@ -109,7 +117,7 @@ configuredBrowserify = (files, config={}) ->
   applyConfig bundle, config
   bundle
 
-framework.$inject = ['config.files', 'config.browserify']
+framework.$inject = ['logger', 'config.files', 'config.browserify']
 preprocessor.$inject = ['logger', 'config.browserify']
 module.exports =
   'preprocessor:browserify': ['factory', preprocessor]
