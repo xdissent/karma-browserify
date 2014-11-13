@@ -5,6 +5,7 @@
     "karma-plugin",
     "browserify"
   ],
+  "private": true,
   "version": "0.2.1",
   "author": {
     "name": "Greg Thornton",
